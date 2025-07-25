@@ -21,10 +21,10 @@ jobs:
         dotnet-version: '8.0.x' # Ensure this matches the version in your .csproj
 
     - name: Restore dependencies
-      run: dotnet restore './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj'
+      run: dotnet restore './HTML-to-PDF-Azure-app-service.csproj'
 
     - name: Build
-      run: dotnet build './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj' --configuration Release
+      run: dotnet build './HTML-to-PDF-Azure-app-service.csproj' --configuration Release
 
     - name: Publish
       run: dotnet publish './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj' --configuration Release --output ./publish
