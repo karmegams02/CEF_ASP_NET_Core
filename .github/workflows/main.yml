@@ -27,7 +27,7 @@ jobs:
       run: dotnet build './HTML-to-PDF-Azure-app-service.csproj' --configuration Release
 
     - name: Publish
-      run: dotnet publish './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj' --configuration Release --output ./publish
+      run: dotnet publish './HTML-to-PDF-Azure-app-service.csproj' --configuration Release --output ./publish
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
