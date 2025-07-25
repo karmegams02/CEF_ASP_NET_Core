@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ActiveDebugProfile>Docker</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>D:\Samples\HTML\html-to-pdf-csharp-examples\Azure\HTML-to-PDF-Azure App Service-Windows-CefSharp\HTML-to-PDF-Azure-app-service\Properties\PublishProfiles\app159706 - Zip Deploy.pubxml</NameOfLastUsedPublishProfile>
+  </PropertyGroup>
+</Project>
