@@ -1,37 +1,47 @@
-name: ASP NET core application in Azure App Service
+# .github/workflows/azure-webapp.yml
+
+name: Deploy ASP.NET Core app to Azure Web App on Windows
 
 on:
-push:
-branches:
--main
+  push:
+    branches:
+      - main
 
 jobs:
- build-and-deploy:
- runs-on: windows-latest
+  build-and-deploy:
+    runs-on: windows-latest
 
- steps:
- -name: check out code
- uses: actions/checkout@v4
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
- -name: Setup .NET Core
- uses: actions/setup-dotnet@v4
- with:
- dotnet-version: '8.0.*'
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.0.x' # Ensure this matches the version in your .csproj
 
- -name: Restore dependencies
- run: dotnet restore
+    - name: Restore dependencies
+      run: dotnet restore './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj'
 
- -name: Dotnet build
- run: dotnet build --configuration Release --no-restore
+    - name: Build
+      run: dotnet build './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj' --configuration Release
 
- -name: Publish
- run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/app159706
+    - name: Publish
+      run: dotnet publish './HTML-to-PDF-Azure-app-service/HTML-to-PDF-Azure-app-service.csproj' --configuration Release --output ./publish
 
- -name: Deploy to Azure Web app
- uses: azure/webapps-deploy@v3
- with:
- app-name: 'app159706'
- slot-name: 'production'
- publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
- package: '${{ env.DOTNET_ROOT}}/app159706'
- 
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'app159706'
+        slot-name: 'production'
+        publish-profile: |
+          <publishData>
+            <publishProfile
+              publishMethod="MSDeploy"
+              publishUrl="app159706-hqama8gwaaa4e0fu.scm.centralindia-01.azurewebsites.net:443"
+              msdeploySite="app159706"
+              userName="$username" # Replace with actual user if required
+              userPWD="$password" # Replace with the actual password if required
+              destinationAppUrl="https://app159706-hqama8gwaaa4e0fu.centralindia-01.azurewebsites.net"
+              />
+          </publishData>
