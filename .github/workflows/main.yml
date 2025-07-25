@@ -32,16 +32,8 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'app159706'
-        slot-name: 'production'
-        publish-profile: |
-          <publishData>
-            <publishProfile
-              publishMethod="MSDeploy"
-              publishUrl="app159706-hqama8gwaaa4e0fu.scm.centralindia-01.azurewebsites.net:443"
-              msdeploySite="app159706"
-              userName="$username" # Replace with actual user if required
-              userPWD="$password" # Replace with the actual password if required
-              destinationAppUrl="https://app159706-hqama8gwaaa4e0fu.centralindia-01.azurewebsites.net"
-              />
-          </publishData>
+        app-name: 'app159706' # Name of your Azure App Service
+        resource-group: 'Ticketid-159706' # Resource group for your app service
+        subscription-id: '6d9be6de-fa37-4d44-a283-7f9c2e3d249a' # Your Azure subscription ID
+
+
