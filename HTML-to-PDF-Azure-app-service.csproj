@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
     <PackageReference Include="Syncfusion.HtmlToPdfConverter.Cef.Net.Windows" Version="29.1.38" />
+<PackageReference Include="chromiumembeddedframework.runtime.win-x64" Version="119.4.3" />
   </ItemGroup>
 
 </Project>
